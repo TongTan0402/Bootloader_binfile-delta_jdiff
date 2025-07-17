@@ -2,7 +2,9 @@
 - **Bước 1:** Vào `Option for Target` -> `User`
 - **Bước 2:** Tích vào ô `Run #1` trong phần `After Build/Rebuild`
 - **Bước 3:** Nhập lệnh sau:
-  ```fromelf --bin --output .\Objects\[file_name].bin .\Objects\[file_name].axf```
+  ```
+  fromelf --bin --output .\Objects\[file_name].bin .\Objects\[file_name].axf
+  ```
 - **Bước 4:** Nhấn `OK` để hoàn tất
 
 # **CÁCH TẠO FILE .PATCH TỪ OLD.BIN + NEW.BIN**

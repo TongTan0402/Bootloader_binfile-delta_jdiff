@@ -16,7 +16,6 @@ void Sys_Init(void)
 	{
 		UART1.Print("[MAIN]: SD Card Init SUCCESS!\n");
 		
-		f_unlink("new.bin");
 		Delta_Run("old.bin", "patch.patch", "new.bin");
 		
 		UART1.Print("Done!!!\n");

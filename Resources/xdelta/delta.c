@@ -57,7 +57,9 @@ void Delta_Run(char *name_old_file, char *name_patch_file, char *name_new_file)
   targets.offset    = 0;
   targets.size      = (sources.size + patchs.size);
 
+	f_unlink("new.bin");
   janpatch(ctx, (FIL*)&sources,  (FIL*)&patchs,  (FIL*)&targets);
+	
 	UART1.Print("Kich thuoc file %s la %d bytes\n", (char*)name_old_file, SD_GetFileSize(name_old_file));
   UART1.Print("Kich thuoc file %s la %d bytes\n", (char*)name_patch_file , SD_GetFileSize(name_patch_file));
 	UART1.Print("Kich thuoc file %s la %d bytes\n", (char*)name_new_file, SD_GetFileSize(name_new_file));
