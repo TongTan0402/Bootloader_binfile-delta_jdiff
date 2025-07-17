@@ -15,7 +15,7 @@
 - Bước 4: Đổi tên `file_name` thành tên file `.bin` vừa build.
 - Bước 5: Chạy file `make_patch.bat`.
 
-## Phương pháp 2: Sử dụng file make_patch.bat.
+## Phương pháp 2: Sử dụng cmd
 - Bước 1: Mở `cmd`.
 - Bước 2: Chạy lệnh sau:
   ```
