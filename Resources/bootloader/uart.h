@@ -5,8 +5,6 @@
  * @date       Sun, 09/02/2025
 */
 
-
-
 #ifndef __UART__
 #define __UART__
 

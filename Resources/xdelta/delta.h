@@ -22,9 +22,7 @@ typedef struct
   size_t size;
 } sfio_stream_t;
 
-//extern FATFS fs;
 
-//void Delta_Mount(void);
 void Delta_Run(char *name_old_file, char *name_patch_file, char *name_new_file);
 
 #ifdef __cplusplus

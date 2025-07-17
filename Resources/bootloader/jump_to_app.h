@@ -8,7 +8,6 @@ extern "C" {
 void JumpToApp(uint32_t app_address);
 void JumpButton_Init(void);
 
-
 #ifdef __cplusplus
 }
 #endif

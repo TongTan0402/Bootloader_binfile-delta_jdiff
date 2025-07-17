@@ -19,12 +19,6 @@ void Sys_Init(void)
 		f_unlink("new.bin");
 		Delta_Run("old.bin", "patch.patch", "new.bin");
 		
-//		for(uint8_t i=0; i<5; i++)
-//		{
-//			SD_ReadFile("old.bin", data, 4095, 4095 * i);
-//			SD_WriteFile("new.bin", data, 4095, 4095 * i);
-//		}
-		
 		UART1.Print("Done!!!\n");
 	}
 	else

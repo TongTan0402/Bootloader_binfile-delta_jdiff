@@ -1,5 +1,12 @@
 #include "jump_to_app.h"
 
+/**
+ * @brief Nhảy đến ứng dụng tại địa chỉ đã cho
+ * @param app_address Địa chỉ của ứng dụng để nhảy đến
+ * Hàm này thực hiện việc nhảy đến ứng dụng tại địa chỉ đã cho.
+ * Nó thiết lập lại các ngắt, cấu hình lại thanh ghi và sau đó chuyển quyền điều khiển đến ứng dụng.
+ * Trước khi nhảy, nó cũng tắt các ngắt và khóa IWDG để tránh reset không mong muốn.
+ */
 void JumpToApp(uint32_t app_address)
 {
 	USART_DeInit(USART1);   
@@ -11,6 +18,9 @@ void JumpToApp(uint32_t app_address)
 	USART_DeInit(USART3);   
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, DISABLE);
 	NVIC_EnableIRQ(USART3_IRQn);
+	
+	IWDG_WriteAccessCmd(IWDG_WriteAccess_Disable);
+	
 	// Tat ngat
 	__disable_irq();
 	
@@ -33,6 +43,9 @@ void JumpToApp(uint32_t app_address)
 }
 
 
+/**
+ * @brief Khởi tạo nút nhảy để chuyển đến ứng dụng
+ */
 void JumpButton_Init(void)
 {
 	GPIO_InitTypeDef		GPIO_InitStruct;

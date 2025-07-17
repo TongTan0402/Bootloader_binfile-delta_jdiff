@@ -2,10 +2,13 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+// UART structure definition
 UART_TypedefStruct UART1;
 UART_TypedefStruct UART2;
 UART_TypedefStruct UART3;
 
+// UARTx enumeration for selecting UART instances
+// This enumeration is used to differentiate between UART instances in the code.
 typedef enum 
 {
 	U1 = 0x00,
@@ -14,6 +17,8 @@ typedef enum
 	
 }UARTx_e;
 
+// Global variables for UART data reception
+// These variables store the received data, flags for reception status, and indices for data processing.
 volatile uint8_t UARTx_dataReceived[3][130] = {"0\0", "0\0", "0\0"};
 volatile uint8_t UARTx_rx_flag[3] = {0,0,0};
 volatile uint8_t UARTx_idx[3]	= {0,0,0};
@@ -23,6 +28,7 @@ void UARTx_Init(USART_TypeDef *UART, uint32_t baudrate, uint8_t remap);
 void UARTx_SendData(USART_TypeDef *UART, const char *str, va_list args);
 uint8_t UARTx_ReceiveData(UARTx_e Ux, uint8_t *data);
 
+// Function prototypes for UART initialization and operations
 void UART1_Init(uint32_t baudrate, uint8_t remap);
 void UART2_Init(uint32_t baudrate, uint8_t remap);
 void UART3_Init(uint32_t baudrate, uint8_t remap);
@@ -330,7 +336,7 @@ uint8_t UARTx_ReceiveData(UARTx_e Ux, uint8_t *data)
 		{
 			if(UARTx_rx_flag[Ux] == 2) 
 			{
-				break; // delay 1 lúc
+				break; // delay 1 lï¿½c
 				UARTx_dataReceived[Ux][UARTx_idx[Ux]-1] = '\0';
 			}
 		}

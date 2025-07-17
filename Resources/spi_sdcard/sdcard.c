@@ -4,19 +4,184 @@
 
 SD_CardInfo sd_card_info;
 
+static void SD_PowerOn(void);
 static uint8_t SD_WaitReady();
 static uint8_t SD_SendCmd(uint8_t cmd, uint32_t arg, uint8_t crc);
 static uint8_t SD_RecvData(uint8_t* buf, uint16_t len);
 static uint8_t SD_SendBlock(uint8_t* buf, uint8_t cmd);
+static __inline void SD_CS_Low()	{GPIOA->BRR = GPIO_Pin_4;}
+static __inline void SD_CS_High() {GPIOA->BSRR = GPIO_Pin_4;}
 
-static __inline void SD_CS_Low()
+
+/**
+ * @brief Khởi tạo thẻ SD
+ * @return 0 on success, 1 on timeout, 2 on error, 3 on unsupported card type
+ * Hàm này thực hiện quá trình khởi tạo thẻ SD.
+ * Nó gửi lệnh CMD0 để reset thẻ, sau đó kiểm tra loại thẻ bằng lệnh CMD8 và CMD41.
+ * Nếu thẻ là SDHC, nó sẽ gửi lệnh CMD58 để đọc OCR và xác định loại thẻ.
+ * Nếu quá trình khởi tạo thành công, nó sẽ trả về 0, nếu không sẽ trả về mã lỗi tương ứng.
+ */
+char SD_Init() 
 {
-	GPIOA->BRR = GPIO_Pin_4;
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  // SDCard PowerOn
+  SD_PowerOn();
+
+  // Kéo CS xuống thấp để giao tiếp
+  SD_CS_Low();
+
+  // Ổn định đường truyền
+  for (uint8_t i = 0; i < 10; i++) 
+  {
+    SPI1_Transfer(0xFF);
+  }
+
+  uint8_t retry = 0, r1 = 0;
+  // Gửi lệnh GO_IDLE_STATE (CMD0) để reset thẻ SD
+  do 
+  {
+    r1 = SD_SendCmd(CMD0, 0, 0x95);
+  } 
+  while (r1 != MSD_IN_IDLE_STATE && retry++ < 200);
+
+  if (retry >= 200) return 1;
+
+  // Gửi lệnh SEND_IF_COND (CMD8) để kiểm tra thẻ SD V2
+  r1 = SD_SendCmd(CMD8, 0x1AA, 0x87);
+  if (r1 == MSD_IN_IDLE_STATE) 
+  {
+    sd_card_info.type = SD_TYPE_V2;
+    // Thẻ SD V2, đọc OCR để xác định loại thẻ
+    uint8_t ocr[4];
+    for (uint8_t i = 0; i < 4; i++) 
+    {
+      ocr[i] = SPI1_Transfer(0xFF);
+    }
+    
+    // Kiểm tra xem thẻ có phải SDHC hay không
+    if (ocr[2] == 0x01 && ocr[3] == 0xAA) 
+    {
+      // Gửi lệnh ACMD41 để khởi động thẻ SDHC
+      while(1) 
+      {
+        if (SD_SendCmd(CMD55, 0, 0x01) <= 1 && SD_SendCmd(CMD41, 0x40000000, 0x01) == 0)
+          break; /* ACMD41 with HCS bit */
+      } 
+
+      // Gửi lệnh READ_OCR (CMD58) để đọc OCR
+      r1 = SD_SendCmd(CMD58, 0, 0x01);
+      if (r1 == 0x00) 
+      {
+        for (uint8_t i = 0; i < 4; i++) ocr[i] = SPI1_Transfer(0xFF);
+        if (ocr[0] & 0x40) sd_card_info.type = SD_TYPE_V2HC;
+      }
+    }
+  } 
+  else 
+  {
+    retry = 0;
+    do 
+    {
+      r1 = SD_SendCmd(CMD1, 0, 0x01);
+    } 
+    while (r1 != 0x00 && retry++ < 200);
+    
+    if (retry >= 200) 
+    {
+      return 3;
+    }
+    sd_card_info.type = SD_TYPE_V1;
+  }
+
+  // Kéo CS lên cao để kết thúc giao tiếp
+  SD_CS_High();
+  // Gửi một byte rỗng để kết thúc giao tiếp
+  SPI1_Transfer(0xFF);
+  return 0;
 }
 
-static __inline void SD_CS_High() 
+/**
+ * @brief Ghi dữ liệu vào thẻ SD
+ * @param filename Tên tệp cần ghi
+ * @param data Dữ liệu cần ghi
+ * @param length Số lượng byte cần ghi
+ * @param offset Vị trí bắt đầu ghi trong tệp
+ * @return 1 on success, 0 on failure
+ */
+char SD_WriteFile(const char* filename, const char* data, const DWORD length, DWORD offset) 
 {
-	GPIOA->BSRR = GPIO_Pin_4;
+	FIL file;
+	FATFS fs;
+	UINT written;
+	
+	if(f_mount(0, &fs) != FR_OK) return 0;
+	
+	if(f_open(&file, filename, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK)
+	{
+		if(f_lseek(&file, offset) != FR_OK) return 0;
+		
+		if(f_write(&file, data, length,  &written) != FR_OK) return 0;
+		
+		if(f_close(&file) != FR_OK) return 0;
+	}
+	f_mount(1, &fs);
+	return 1;
+}
+
+/** 
+ * @brief Đọc dữ liệu từ thẻ SD
+ * @param filename Tên tệp cần đọc
+ * @param data Con trỏ đến vùng nhớ để lưu dữ liệu đọc
+ * @param length Số lượng byte cần đọc
+ * @param offset Vị trí bắt đầu đọc trong tệp
+ * @return 1 on success, 0 on failure
+ * Hàm này mở tệp trên thẻ SD, di chuyển con trỏ đến vị trí offset và đọc dữ liệu vào vùng nhớ data.
+ * Nếu quá trình đọc thành công, nó sẽ trả về 1, nếu không sẽ trả về 0.
+ * Nó cũng đảm bảo đóng tệp sau khi đọc để giải phóng tài nguyên.
+ */
+char SD_ReadFile(const char* filename, unsigned char* data, const DWORD length, DWORD offset) 
+{  
+	FIL file;
+	FATFS fs;
+	UINT written;
+	
+	if(f_mount(0, &fs) != FR_OK) return 0;
+	
+	if(f_open(&file, filename, FA_OPEN_EXISTING | FA_READ) == FR_OK)
+	{
+		if(f_lseek(&file, offset) != FR_OK) return 0;
+		
+		if(f_read(&file, data, length,  &written) != FR_OK) return 0;
+		
+		if(f_close(&file) != FR_OK) return 0;
+	}
+	f_mount(1, &fs);
+
+	return 1;
+}
+
+/**
+ * @brief Lấy kích thước của tệp trên thẻ SD
+ * @param filename Tên tệp cần lấy kích thước
+ * @return Kích thước của tệp trong byte, hoặc 0 nếu không tìm thấy tệp
+ */
+DWORD SD_GetFileSize(const char* filename)
+{
+	DWORD fileSize = 0;
+	FATFS fs;
+  FIL file;
+	if(f_mount(0, &fs) != FR_OK) return 0;
+  if (f_open(&file, filename, FA_READ) == FR_OK)
+  {
+    // Get the size of the file
+    fileSize = f_size(&file);
+    f_close(&file); // Close the file when done
+
+    // Now you have the fileSize in bytes, you can do whatever you want with it
+  }
+	f_mount(1, &fs);
+  return fileSize;
 }
 
 static uint8_t SD_WaitReady() 
@@ -142,74 +307,6 @@ static void SD_PowerOn(void)
   SPI1_Transfer(0XFF);
 }
 
-char SD_Init() 
-{
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-		SD_PowerOn();
-
-    SD_CS_Low();
-    for (uint8_t i = 0; i < 10; i++) 
-		{
-				SPI1_Transfer(0xFF);
-		}
-
-    uint8_t retry = 0, r1 = 0;
-    do 
-		{
-        r1 = SD_SendCmd(CMD0, 0, 0x95);
-    } 
-		while (r1 != MSD_IN_IDLE_STATE && retry++ < 200);
-
-    if (retry >= 200) return 1;
-
-    r1 = SD_SendCmd(CMD8, 0x1AA, 0x87);
-    if (r1 == MSD_IN_IDLE_STATE) 
-		{
-        sd_card_info.type = SD_TYPE_V2;
-        uint8_t ocr[4];
-        for (uint8_t i = 0; i < 4; i++) 
-				{
-						ocr[i] = SPI1_Transfer(0xFF);
-				}
-				
-        if (ocr[2] == 0x01 && ocr[3] == 0xAA) 
-				{
-            while(1) 
-						{
-                if (SD_SendCmd(CMD55, 0, 0x01) <= 1 && SD_SendCmd(CMD41, 0x40000000, 0x01) == 0)
-                  break; /* ACMD41 with HCS bit */
-            } 
-
-            r1 = SD_SendCmd(CMD58, 0, 0x01);
-            if (r1 == 0x00) 
-						{
-                for (uint8_t i = 0; i < 4; i++) ocr[i] = SPI1_Transfer(0xFF);
-                if (ocr[0] & 0x40) sd_card_info.type = SD_TYPE_V2HC;
-            }
-        }
-    } 
-		else 
-		{
-        retry = 0;
-        do 
-				{
-            r1 = SD_SendCmd(CMD1, 0, 0x01);
-        } 
-				while (r1 != 0x00 && retry++ < 200);
-				
-        if (retry >= 200) 
-				{
-						return 3;
-				}
-        sd_card_info.type = SD_TYPE_V1;
-    }
-
-    SD_CS_High();
-    SPI1_Transfer(0xFF);
-    return 0;
-}
-
 uint32_t SD_GetSectorCount() 
 {
     uint8_t csd[16];
@@ -306,65 +403,6 @@ uint8_t SD_WriteSector(uint32_t sector, uint8_t* buffer, uint8_t cnt)
     }
     SD_CS_High();
     return r1;
-}
-
-char SD_WriteFile(const char* filename, const char* data, const DWORD length, DWORD offset) 
-{
-	FIL file;
-	FATFS fs;
-	UINT written;
-	
-	if(f_mount(0, &fs) != FR_OK) return 0;
-	
-	if(f_open(&file, filename, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK)
-	{
-		if(f_lseek(&file, offset) != FR_OK) return 0;
-		
-		if(f_write(&file, data, length,  &written) != FR_OK) return 0;
-		
-		if(f_close(&file) != FR_OK) return 0;
-	}
-	f_mount(1, &fs);
-	return 1;
-}
-
-char SD_ReadFile(const char* filename, unsigned char* data, const DWORD length, DWORD offset) 
-{  
-	FIL file;
-	FATFS fs;
-	UINT written;
-	
-	if(f_mount(0, &fs) != FR_OK) return 0;
-	
-	if(f_open(&file, filename, FA_OPEN_EXISTING | FA_READ) == FR_OK)
-	{
-		if(f_lseek(&file, offset) != FR_OK) return 0;
-		
-		if(f_read(&file, data, length,  &written) != FR_OK) return 0;
-		
-		if(f_close(&file) != FR_OK) return 0;
-	}
-	f_mount(1, &fs);
-
-	return 1;
-}
-
-DWORD SD_getFileSize(const char* filename)
-{
-	DWORD fileSize = 0;
-	FATFS fs;
-  FIL file;
-	if(f_mount(0, &fs) != FR_OK) return 0;
-  if (f_open(&file, filename, FA_READ) == FR_OK)
-  {
-    // Get the size of the file
-    fileSize = f_size(&file);
-    f_close(&file); // Close the file when done
-
-    // Now you have the fileSize in bytes, you can do whatever you want with it
-  }
-	f_mount(1, &fs);
-  return fileSize;
 }
 
 DSTATUS SD_disk_initialize(BYTE pdrv) 

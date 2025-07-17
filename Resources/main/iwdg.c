@@ -1,6 +1,13 @@
 #include "iwdg.h"
 
-
+/**
+ * @brief Cấu hình Watchdog Timer (IWDG)
+ * Hàm này cấu hình IWDG với prescaler và reload value để tạo ra khoảng thời gian watchdog.
+ * Nó cũng kích hoạt IWDG để bắt đầu đếm ngược.
+ * @note Thời gian watchdog được tính bằng công thức: (Reload + 1) * Prescaler / LSI_freq
+ * @param None
+ * @retval None
+ */
 void IWDG_Config(void)
 {
 	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);
