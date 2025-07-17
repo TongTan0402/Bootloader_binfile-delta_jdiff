@@ -21,3 +21,13 @@
   ```
   ./jdiff.exe [old_file].bin [new_file].bin patch.patch
   ```
+
+# **PHẦN MỀM SO SÁNH CÁC DỮ LIỆU KHÁC NHAU GIỮA HAI FILE .BIN**
+- [Binary Diff Tool](https://www.guiffy.com/Binary-Diff-Tool.html)
+<details>
+<summary>Chi tiết thêm</summary>
+
+- Tải về và mở phần mềm lên.
+- Chọn hai file .bin cần so sánh.
+
+</details>
