@@ -18,27 +18,17 @@ if exist %BIN_PATH% (
     :: Hiển thị danh sách file (tuỳ chọn)
     dir /B /O:D
 
-    timeout /t 1 >nul
-
     :: Xoá old.bin nếu có
     if exist old.bin del /f old.bin
-
-    timeout /t 1 >nul
 
     :: Đổi tên new.bin thành old.bin nếu tồn tại
     if exist new.bin rename new.bin old.bin
 
-    timeout /t 1 >nul
-
     :: Xoá patch.patch nếu có
     if exist patch.patch del /f patch.patch
 
-    timeout /t 1 >nul
-
     :: Đổi tên bản build mới thành new.bin
     rename %file_name% new.bin
-
-    timeout /t 1 >nul
 
     :: Tạo patch bằng jdiff.exe
     if exist jdiff.exe (
@@ -57,4 +47,3 @@ if exist %BIN_PATH% (
 )
 
 endlocal
-pause

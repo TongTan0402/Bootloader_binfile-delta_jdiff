@@ -4,14 +4,14 @@
 
 #define UART_RECEIVE_DELAY_FACTOR 1.1
 
-#define MAX_LENGTH 0x410
+#define MAX_LENGTH 0x420
 
 typedef struct
 {
 	int16_t length;
 	int16_t push_index;
 	int16_t pop_index;
-	uint8_t data[MAX_LENGTH];
+	uint8_t data[MAX_LENGTH+1];
 
 }Queue;
 
@@ -32,8 +32,6 @@ uint16_t UARTx_ReceiveData(uint8_t *data);
 void UART1_Init(uint32_t baudrate, uint8_t remap);
 void UART1_Print(const char *str, ...);
 uint16_t UART1_Scan(uint8_t *data);
-
-
 
 static volatile __inline void Queue_Push(uint8_t data)
 {
@@ -284,6 +282,6 @@ uint16_t UARTx_ReceiveData(uint8_t *data)
 
 void USART1_IRQHandler(void)
 {
-		Queue_Push(USART1->DR);
-		data_timeout = 0;
+	Queue_Push(USART1->DR);
+	data_timeout = 0;
 }

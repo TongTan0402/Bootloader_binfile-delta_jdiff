@@ -1,23 +1,31 @@
 import serial
 import serial.tools.list_ports
+import subprocess
 import time
+
+UPDATE_FIRMWARE = 0
+UPDATE_PATCH    = 1
 
 # FSM_START_TYPE = 0 to Update Firmware
 # FSM_START_TYPE = 1 to Update Patch
-FSM_START_TYPE = 1
+FSM_START_TYPE = UPDATE_FIRMWARE
 
 selected_port = "COM3"
 # path = "D:\\Documents\\Programs\\STM32\\SPL\\Blink_Led\\Objects\\Blink_Led.bin"
 # path = "D:\Documents\Programs\STM32\SPL\STM32\GPIO\Objects\gpio.bin"
-# path = "D:\\Documents\\Programs\\STM32\\SPL\\Booloader\\Bootloader_binfile\\Resources\\file\\old.bin"
-path = "D:\\Documents\\Programs\\STM32\\SPL\\Booloader\\Bootloader_binfile\\Resources\\file\\patch.patch"
+firmware_path = "D:\\Documents\\Programs\\STM32\\SPL\\Booloader\\Bootloader_binfile\\Resources\\file\\new.bin"
+patch_path = "D:\\Documents\\Programs\\STM32\\SPL\\Booloader\\Bootloader_binfile\\Resources\\file\\patch.patch"
+
+result = subprocess.run(["make_patch.bat"], cwd = "D:\\Documents\\Programs\\STM32\\SPL\\Booloader\\Bootloader_binfile\\Resources\\file", shell=True, capture_output=True, text=True)
+print(result.stdout)
 
 FSM_TYPE_MESSAGE_START  = 0x00
 FSM_TYPE_MESSAGE_DATA   = 0x01
 FSM_TYPE_MESSAGE_END    = 0x02
 
-NUM_OF_BYTES_IN_A_FRAME = 0x400
-FSM_ACK_SENT_SUCCESSFULLY = 4
+NUM_OF_BYTES_IN_A_FRAME = 0x200
+FSM_ACK_SENT_SUCCESSFULLY = 0xff
+FSM_ACK_UPDATE_FIRMWARE_SUCESSFULLY = 0x55
 
 
 def CheckSum(data, length):
@@ -38,12 +46,10 @@ def CheckSum(data, length):
     
 def CreateFrame(data, type_message):
   frm =  bytes([0xaa, 0x55])
-  frm += bytes([type_message])               # Type Message
-  frm += bytes([len(data) & 0xff, len(data) >> 8])                  # Length
-  frm += data                                # Data
-  check_sum = CheckSum(frm, len(frm))
-  print(format(check_sum, '04X'))
-  frm += bytes([check_sum & 0xff, check_sum >> 8])    # Check Sum
+  frm += bytes([type_message])                            # Type Message
+  frm += len(data).to_bytes(2, 'little')                  # Length
+  frm += data                                             # Data
+  frm += CheckSum(frm, len(frm)).to_bytes(2, 'little')    # Check Sum
   
   return frm
 
@@ -51,7 +57,7 @@ def CreateFrame(data, type_message):
 def SendMessage(frame, offset):
   ack = 0
   timeout = 10
-  while(ack != FSM_ACK_SENT_SUCCESSFULLY and timeout):
+  while(not (ack == FSM_ACK_SENT_SUCCESSFULLY or ack == FSM_ACK_UPDATE_FIRMWARE_SUCESSFULLY) and timeout):
     ser.write(frame)
     ack = int(ser.readline().strip())
     print(f"offset {format(offset, '02X')}: {frame} - Ack: {ack}")
@@ -60,9 +66,45 @@ def SendMessage(frame, offset):
       
   if(not timeout): 
     print("\nError!!!\n")
+    while(1):
+      pass
     
-  return timeout and 1
+  return 1
 
+
+def SendFrame(path):
+  offset = 0
+  with open(path, 'rb') as file:
+    while(1):
+      data = file.read(NUM_OF_BYTES_IN_A_FRAME)
+      if(not data):
+        break
+      frame = CreateFrame(data, FSM_TYPE_MESSAGE_DATA)
+      if(not SendMessage(frame, offset)):
+        break
+      offset += NUM_OF_BYTES_IN_A_FRAME
+    file.close()
+
+
+def UpdateFirmwareMessage():
+  # Bản tin cập nhật firmware
+  update_message = "AA550A24557064617465204669726D77617265212121D8\n"
+  count = 2 
+  while(count):
+    ser.write(update_message.encode('utf-8'))
+    lines = ser.readlines() # Đọc tất cả các dòng trả về trong buffer
+    for line in lines:
+      # Kiểm tra xem có dòng nào chứa "Preparing firmware update"
+      # Nếu có, gửi "Done!!!" và chờ nhận "Start update firmware!!!"
+      if("Preparing firmware update" in line.strip().decode()):
+        data = ""
+        while(data != "Start update firmware!!!"):
+          ser.write("Done!!!\n".encode('utf-8'))
+          data = ser.readline().strip().decode()
+          print(data)
+        break
+    count -= 1
+  
 
 #============================================================= Main =============================================================
 #============================================================= Main =============================================================
@@ -88,30 +130,34 @@ else:
   print(f"Đang mở cổng: {selected_port}")
 
   # Mở cổng UART
-  ser = serial.Serial(port=selected_port, baudrate=115200, timeout=None)
+  ser = serial.Serial(port=selected_port, baudrate=115200, timeout=0.5)
 
   if ser.is_open:
     print("Cổng COM đã mở thành công!")
   else:
     print("Cổng COM chưa mở!")
 
-  # Đọc file và gửi
+  UpdateFirmwareMessage()
   
-  frame = CreateFrame(bytes([FSM_START_TYPE]), FSM_TYPE_MESSAGE_START)
+  # Start_Frame
+  with open(firmware_path, 'rb') as file:
+    length = len(file.read())
+    frame = CreateFrame(bytes([FSM_START_TYPE]) + length.to_bytes(4, 'little'), FSM_TYPE_MESSAGE_START)
+    file.close()
   
+  # Data_Frame
+  start_time = time.time()
   if(SendMessage(frame, 0)):
-    offset = 0
-    with open(path, 'rb') as file:
-      while(1):
-        data = file.read(NUM_OF_BYTES_IN_A_FRAME)
-        if(not data):
-          break
-        frame = CreateFrame(data, FSM_TYPE_MESSAGE_DATA)
-        if(not SendMessage(frame, offset)):
-          break
-        offset += NUM_OF_BYTES_IN_A_FRAME
+    if(FSM_START_TYPE == UPDATE_FIRMWARE):
+      SendFrame(firmware_path)
+    elif(FSM_START_TYPE == UPDATE_PATCH):
+      SendFrame(patch_path)
 
   frame = CreateFrame(b'', FSM_TYPE_MESSAGE_END)
-  SendMessage(frame, offset)
+  SendMessage(frame, 0)
+  
+  total_time = time.time() - start_time
+  
+  print(f"\nTime: {total_time:.4f} sec")
   
   ser.close()

@@ -17,11 +17,11 @@ extern "C" {
 
 #define FLASH_PAGE_SIZE 0x400 // 1KB
 
-void Flash_Write(uint32_t address, uint32_t *data, uint32_t length);
-void Flash_Read (uint32_t address, uint32_t *data, uint32_t length);
+void Flash_Write(uint32_t address, uint32_t *data, int32_t length);
+void Flash_Read (uint32_t address, uint32_t *data, int32_t length);
 
-void Flash_WriteByte(uint32_t address, uint8_t *data, uint32_t length);
-void Flash_ReadByte (uint32_t address, uint8_t *data, uint32_t length);
+void Flash_WriteByte(uint32_t address, uint8_t *data, int32_t length);
+void Flash_ReadByte (uint32_t address, uint8_t *data, int32_t length);
 
 #ifdef __cplusplus
 }

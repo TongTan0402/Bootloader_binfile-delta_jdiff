@@ -4,9 +4,9 @@
 #include "../fsm.h"
 
 // Buffer sizes for fread/fwrite operations
-static unsigned char source_buf[SIZE_BUFFER];
-static unsigned char target_buf[SIZE_BUFFER];
-static unsigned char patch_buf [SIZE_BUFFER];
+static unsigned char source_buf[FLASH_PAGE_SIZE];
+static unsigned char target_buf[FLASH_PAGE_SIZE];
+static unsigned char patch_buf [FLASH_PAGE_SIZE];
 
 size_t sfio_fread(void* data, 				size_t size, size_t count, sfio_stream_t* stream);
 size_t sfio_fwrite(const void *data, 	size_t size, size_t count, sfio_stream_t *stream);
@@ -21,9 +21,9 @@ long sfio_tell(sfio_stream_t *stream);
  */
 janpatch_ctx ctx =
 {
-  {source_buf, SIZE_BUFFER}, 
-  {target_buf, SIZE_BUFFER}, 
-  {patch_buf , SIZE_BUFFER}, 
+  {source_buf, FLASH_PAGE_SIZE}, 
+  {target_buf, FLASH_PAGE_SIZE}, 
+  {patch_buf , FLASH_PAGE_SIZE}, 
 
   &sfio_fread,
   &sfio_fwrite,
@@ -41,7 +41,7 @@ janpatch_ctx ctx =
  * @param name_patch_file Tên tệp patch chứa các thay đổi
  * @param name_new_file Tên tệp mới sẽ được tạo ra sau quá trình patching
  */
-void Delta_Run()
+uint8_t Delta_Run()
 {
   sfio_stream_t sources;
   sfio_stream_t patchs;
@@ -57,9 +57,9 @@ void Delta_Run()
 
   targets.address   = fsm_app_indication.firmware_address;
   targets.offset    = 0;
-  targets.size      = (sources.size + patchs.size);
+  targets.size      = fsm_app_indication.firmware_length;
 
-  janpatch(ctx, (FIL*)&sources,  (FIL*)&patchs,  (FIL*)&targets);
+  return janpatch(ctx, (FIL*)&sources,  (FIL*)&patchs,  (FIL*)&targets);
 	
 }
 

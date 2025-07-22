@@ -12,9 +12,6 @@ extern "C"{
 #include "../../spi_sdcard/sdcard.h"
 
 
-#define SIZE_BUFFER 0x400
-
-
 typedef struct
 {
   uint32_t address;
@@ -23,7 +20,7 @@ typedef struct
 } sfio_stream_t;
 
 
-void Delta_Run();
+uint8_t Delta_Run();
 
 #ifdef __cplusplus
 }

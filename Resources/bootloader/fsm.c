@@ -43,7 +43,7 @@ typedef enum
  */
 typedef enum
 {
-	FSM_TYPE_MESSAGE_START, // PATCH OR FIRMWARE
+	FSM_TYPE_MESSAGE_START, // PATCH OR FIRMWARE (8 BIT) | FIRMWARE_LENGTH (32 BIT)
 	FSM_TYPE_MESSAGE_DATA,
 	FSM_TYPE_MESSAGE_END,
 	
@@ -70,7 +70,7 @@ typedef struct __PACKED
 	uint16_t 	start;
 	uint8_t 	type_message;
 	uint16_t 	length;					
-	uint8_t 	data[FLASH_PAGE_SIZE]; 
+	uint8_t 	data[FLASH_PAGE_SIZE + 1]; 
 	uint16_t 	check_sum;
 } FSM_Frame_s;
 
@@ -82,9 +82,9 @@ uint8_t 			*fsm_frame_ptr = &fsm_frame;
 PacketState_e		fsm_packet_state = FSM_PACKET_STATE_START;
 
 uint16_t fsm_num_of_message_in_a_chunk = 0;
-uint8_t fsm_data[FLASH_PAGE_SIZE];
+uint8_t fsm_data[FLASH_PAGE_SIZE + 1];
 uint8_t fsm_start_type = FSM_START_TYPE_FIRMWARE;
-static volatile uint32_t patch_addr = 0;
+static volatile uint16_t check_sum = 0;
 uint16_t	fsm_index = 0;
 
 /* Public Variables -------------------------------------------------------------*/
@@ -121,7 +121,6 @@ void FSM_GetAppIndication(void)
   Flash_Read(FSM_APP_INDICATION_ADDRESS, (uint32_t *)&fsm_app_indication, length);
 	if(fsm_app_indication.app_address != FSM_DEFAULT_APP_ADDRESS) fsm_app_indication.app_address = FSM_DEFAULT_APP_ADDRESS;
 	if(fsm_app_indication.firmware_address != FSM_DEFAULT_FIRMWARE_ADDRESS) fsm_app_indication.firmware_address = FSM_DEFAULT_FIRMWARE_ADDRESS;
-	fsm_app_indication.firmware_length = 0;
 	fsm_app_indication.patch_length = 0;
 }
 
@@ -198,6 +197,7 @@ FSM_Ack_e	 FSM_GetMessage(uint8_t **str_1_byte)
 			
 			if(done++)
 			{
+				check_sum = CheckSum(fsm_frame_ptr, fsm_frame.length + DIS_FROM_START_TO_DATA_STATE);
 				done = 0;
 				// Nếu kiểm tra checksum không khớp, trả về lỗi
 				if(fsm_frame.check_sum != CheckSum(fsm_frame_ptr, fsm_frame.length + DIS_FROM_START_TO_DATA_STATE)) 
@@ -272,17 +272,18 @@ void Swap_AppAndFirmware(void)
  * @return 1 nếu nạp thành công, 0 nếu không thành công
  * Hàm này nạp dữ liệu vào bộ nhớ flash từ các khung dữ liệu đã nhận.
  */
-uint8_t FSM_LoadDataIntoFlash(void)
+FSM_Ack_e FSM_LoadDataIntoFlash(void)
 {
 	static TypeMessage_e  fsm_type_message = FSM_TYPE_MESSAGE_START;
-	static uint32_t address;
-	uint8_t done = 0;
+	static uint32_t 			address;
+	FSM_Ack_e 						ack = FSM_ACK_SENT_SUCCESSFULLY;
 	
 	switch(fsm_frame.type_message)
 	{
 		case FSM_TYPE_MESSAGE_START: // PATCH OR FIRMWARE
 		{
 			fsm_start_type = fsm_frame.data[0];
+			fsm_app_indication.firmware_length = *((uint32_t *)(&fsm_frame.data[1]));
 			address = fsm_app_indication.firmware_address;
 
 			if(fsm_start_type == FSM_START_TYPE_PATCH) 
@@ -290,7 +291,6 @@ uint8_t FSM_LoadDataIntoFlash(void)
 				FSM_GET_PATCH_ADDRESS();
 				address = fsm_app_indication.patch_address;
 			}
-			patch_addr = address;
 
 			fsm_type_message = FSM_TYPE_MESSAGE_DATA;
 			break;
@@ -306,7 +306,6 @@ uint8_t FSM_LoadDataIntoFlash(void)
 					{
 						Flash_WriteByte(address, fsm_data, FLASH_PAGE_SIZE);
 						address += FLASH_PAGE_SIZE;
-						fsm_app_indication.firmware_length += FLASH_PAGE_SIZE;
 						fsm_num_of_message_in_a_chunk %= FLASH_PAGE_SIZE;
 					}
 				}
@@ -321,7 +320,7 @@ uint8_t FSM_LoadDataIntoFlash(void)
 					}
 				}
 			}
-			else while(1);
+			else ack = FSM_ACK_START_ERROR;
 			break;
 		}
 		
@@ -332,23 +331,30 @@ uint8_t FSM_LoadDataIntoFlash(void)
 			if(fsm_start_type == FSM_START_TYPE_FIRMWARE)
 			{
 				Flash_WriteByte(address, fsm_data, fsm_num_of_message_in_a_chunk);
-				fsm_app_indication.firmware_length += fsm_num_of_message_in_a_chunk;
 				fsm_app_indication.app_length = fsm_app_indication.firmware_length;
 			}
 			else if(fsm_start_type == FSM_START_TYPE_PATCH)
 			{
 				Flash_WriteByte(address, fsm_data, fsm_num_of_message_in_a_chunk);
 				fsm_app_indication.patch_length += fsm_num_of_message_in_a_chunk;
-				FSM_GET_FIRMWARE_ADDRESS();
-				Delta_Run();
+				
+				if(fsm_app_indication.patch_length > 5)
+				{
+					FSM_GET_FIRMWARE_ADDRESS();
+					Delta_Run();
+				}
 			}
-			Swap_AppAndFirmware();
-			FSM_LoadAppIndicationIntoFlash();
-			done = 1;
+			
+			if(fsm_app_indication.patch_length > 5 || fsm_start_type == FSM_START_TYPE_FIRMWARE)
+			{
+				Swap_AppAndFirmware();
+				FSM_LoadAppIndicationIntoFlash();
+			}
+			ack = FSM_ACK_UPDATE_FIRMWARE_SUCESSFULLY;
 			break;
 		}
 		default:
 			break;
 	}
-	return done;
+	return ack;
 }

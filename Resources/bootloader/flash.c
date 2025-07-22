@@ -10,7 +10,7 @@
  * Nó mở khóa flash, xóa trang tại địa chỉ đó, và sau đó ghi dữ liệu vào.
  * Sau khi hoàn thành, nó khóa lại bộ nhớ flash để bảo vệ.
  */
-void Flash_Write(uint32_t address, uint32_t *data, uint32_t length)
+void Flash_Write(uint32_t address, uint32_t *data, int32_t length)
 {
 	FLASH_Unlock();
 	
@@ -34,7 +34,7 @@ void Flash_Write(uint32_t address, uint32_t *data, uint32_t length)
  * Hàm này đọc dữ liệu từ bộ nhớ flash tại địa chỉ đã cho.
  * Nó lặp qua từng từ và lưu giá trị vào con trỏ data.
  */
-void Flash_Read(uint32_t address, uint32_t *data, uint32_t length)
+void Flash_Read(uint32_t address, uint32_t *data, int32_t length)
 {
 	length /= sizeof(*data);
 	while(length--)
@@ -51,7 +51,7 @@ void Flash_Read(uint32_t address, uint32_t *data, uint32_t length)
  * @param 	data: Dữ liệu để ghi
  * @param 	length: Số lượng dữ liệu cần ghi
  */
-void Flash_WriteByte(uint32_t address, uint8_t *data, uint32_t length)
+void Flash_WriteByte(uint32_t address, uint8_t *data, int32_t length)
 {
 	FLASH_Unlock();
 	
@@ -75,7 +75,7 @@ void Flash_WriteByte(uint32_t address, uint8_t *data, uint32_t length)
  * Hàm này đọc dữ liệu từ bộ nhớ flash tại địa chỉ đã cho.
  * Nó lặp qua từng byte và lưu giá trị vào con trỏ data.
  */
-void Flash_ReadByte(uint32_t address, uint8_t *data, uint32_t length)
+void Flash_ReadByte(uint32_t address, uint8_t *data, int32_t length)
 {
 	while(length--)
 	{
