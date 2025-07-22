@@ -1,5 +1,7 @@
 #include "delta.h"
 #include "janpatch.h"
+#include "../flash.h"
+#include "../fsm.h"
 
 // Buffer sizes for fread/fwrite operations
 static unsigned char source_buf[SIZE_BUFFER];
@@ -39,30 +41,26 @@ janpatch_ctx ctx =
  * @param name_patch_file Tên tệp patch chứa các thay đổi
  * @param name_new_file Tên tệp mới sẽ được tạo ra sau quá trình patching
  */
-void Delta_Run(char *name_old_file, char *name_patch_file, char *name_new_file)
+void Delta_Run()
 {
   sfio_stream_t sources;
   sfio_stream_t patchs;
   sfio_stream_t targets;
 
-  sources.name_file = name_old_file;
+  sources.address   = fsm_app_indication.app_address;
   sources.offset    = 0;
-  sources.size      = SD_GetFileSize(name_old_file);
+  sources.size      = fsm_app_indication.app_length;
 
-  patchs.name_file  = name_patch_file;
+  patchs.address    = fsm_app_indication.patch_address;
   patchs.offset     = 0;
-  patchs.size       = SD_GetFileSize(name_patch_file);;
+  patchs.size       = fsm_app_indication.patch_length;
 
-  targets.name_file = name_new_file;
+  targets.address   = fsm_app_indication.firmware_address;
   targets.offset    = 0;
   targets.size      = (sources.size + patchs.size);
 
-	f_unlink("new.bin");
   janpatch(ctx, (FIL*)&sources,  (FIL*)&patchs,  (FIL*)&targets);
 	
-	UART1.Print("Kich thuoc file %s la %d bytes\n", (char*)name_old_file, SD_GetFileSize(name_old_file));
-  UART1.Print("Kich thuoc file %s la %d bytes\n", (char*)name_patch_file , SD_GetFileSize(name_patch_file));
-	UART1.Print("Kich thuoc file %s la %d bytes\n", (char*)name_new_file, SD_GetFileSize(name_new_file));
 }
 
 /**
@@ -84,9 +82,8 @@ size_t sfio_fread(void* data, size_t size, size_t count, sfio_stream_t* stream)
     bytesToRead = stream->size - stream->offset;
   }
 
-	char res;
-	res = SD_ReadFile(stream->name_file, data, bytesToRead, stream->offset);
-  return res ? bytesToRead : res;
+	Flash_Read(stream->address + stream->offset, (uint8_t *)data, bytesToRead);
+  return bytesToRead;
 }
 
 /**
@@ -107,11 +104,10 @@ size_t sfio_fwrite(const void *data, size_t size, size_t count, sfio_stream_t *s
   {
     bytesToRead = stream->size - stream->offset;
   }
-
-	char res;
-	res = SD_WriteFile(stream->name_file, data, bytesToRead, stream->offset);
 	
-  return res ? bytesToRead : res;
+	Flash_Write(stream->address + stream->offset, (uint8_t *)data, bytesToRead);
+	
+  return bytesToRead;
 }
 
 /**
@@ -123,14 +119,18 @@ size_t sfio_fwrite(const void *data, size_t size, size_t count, sfio_stream_t *s
  */
 int sfio_fseek(sfio_stream_t *stream, long int offset, int origin)
 {
-  if (offset > stream->size)
+  switch(origin)
   {
-    return -1;
+    case SEEK_SET:
+      stream->offset = offset;
+      break;
+    case SEEK_CUR:
+      stream->offset += offset;
+      break;
+    default:
+      return -1;
   }
-  else
-  {
-    stream->offset = offset;
-  }
+  if (stream->offset > stream->size) return -1;
   return 0;
 }
 

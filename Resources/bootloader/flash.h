@@ -13,6 +13,9 @@
 extern "C" {
 #endif
 #include "stm32f10x.h"                  // Device header
+#include <stdint.h>
+
+#define FLASH_PAGE_SIZE 0x400 // 1KB
 
 void Flash_Write(uint32_t address, uint32_t *data, uint32_t length);
 void Flash_Read (uint32_t address, uint32_t *data, uint32_t length);

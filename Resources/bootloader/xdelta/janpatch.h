@@ -9,17 +9,18 @@ extern "C"{
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../spi_sdcard/fatfs/ff.h"
+#include "delta.h"
+#include "../../spi_sdcard/fatfs/ff.h"
 
  #ifndef JANPATCH_DEBUG
- #define JANPATCH_DEBUG(...)  while (0) {} // printf(__VA_ARGS__)
+ #define JANPATCH_DEBUG(...)  while (0) {} // UART1.Print(__VA_ARGS__)
  #endif
 
  #ifndef JANPATCH_ERROR
- #define JANPATCH_ERROR(...)  UART1.Print(__VA_ARGS__)
+ #define JANPATCH_ERROR(...)  while (0) {} // UART1.Print(__VA_ARGS__)
  #endif
 
-#define JANPATCH_STREAM     FIL
+#define JANPATCH_STREAM     sfio_stream_t
 
 typedef struct {
     unsigned char*   buffer;

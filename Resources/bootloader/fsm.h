@@ -7,6 +7,7 @@
 #endif
 
 #include "stm32f10x.h"                  // Device header
+#include <stdint.h>
 
 typedef enum
 {
@@ -17,9 +18,22 @@ typedef enum
 	
 }FSM_Ack_e;
 
+typedef struct
+{
+  uint32_t app_address;
+  uint32_t app_length;
+  uint32_t patch_address;
+  uint32_t patch_length;
+  uint32_t firmware_address;
+  uint32_t firmware_length; 
 
-extern uint32_t FSM_base_address;
+}App_Indication_t;
 
+
+extern App_Indication_t 		fsm_app_indication;
+
+
+void FSM_GetAppIndication(void);
 uint8_t FSM_GetMessage(uint8_t **str_2_byte);
 uint8_t FSM_LoadDataIntoFlash(void);
 void FSM_Response(uint8_t ack);

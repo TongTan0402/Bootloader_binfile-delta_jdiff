@@ -1,10 +1,11 @@
-./objects/delta.o: Resources\xdelta\delta.c Resources\xdelta\delta.h \
+./objects/delta.o: Resources\bootloader\xdelta\delta.c \
+  Resources\bootloader\xdelta\delta.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  Resources\xdelta\..\bootloader\uart.h \
+  Resources\bootloader\xdelta\..\..\bootloader\uart.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h \
   RTE\_Target_1\RTE_Components.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_version.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_compiler.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_armclang.h \
@@ -19,13 +20,15 @@
   C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h \
-  Resources\xdelta\..\spi_sdcard\sdcard.h \
-  Resources\xdelta\..\spi_sdcard\spi.h \
-  Resources\xdelta\..\spi_sdcard\..\spi_sdcard\fatfs\ff.h \
-  Resources\xdelta\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h \
-  Resources\xdelta\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h \
-  Resources\xdelta\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h \
-  Resources\xdelta\janpatch.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\sdcard.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\spi.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\ff.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h \
+  Resources\bootloader\xdelta\janpatch.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  Resources\xdelta\..\spi_sdcard\fatfs\ff.h
+  Resources\bootloader\xdelta\..\..\spi_sdcard\fatfs\ff.h \
+  Resources\bootloader\xdelta\..\flash.h \
+  Resources\bootloader\xdelta\..\fsm.h

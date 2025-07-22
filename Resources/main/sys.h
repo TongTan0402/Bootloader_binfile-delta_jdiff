@@ -9,7 +9,7 @@ extern "C" {
 #include "../bootloader/fsm.h"
 #include "../bootloader/flash.h"
 #include "../spi_sdcard/sdcard.h"
-#include "../xdelta/delta.h"
+#include "../bootloader/xdelta/delta.h"
 
 #include <stdio.h>
 #include <stdlib.h>

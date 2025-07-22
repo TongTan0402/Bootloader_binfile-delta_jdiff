@@ -8,8 +8,6 @@ set file_name=Blink_Led.bin
 
 set BIN_PATH=%base_path%%file_name%
 
-echo %BIN_PATH%
-
 :: Kiểm tra xem file .bin có tồn tại không
 if exist %BIN_PATH% (
     echo Found %file_name%, processing...

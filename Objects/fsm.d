@@ -17,4 +17,13 @@
   C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h \
   C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h \
-  Resources\bootloader\uart.h Resources\bootloader\flash.h
+  Resources\bootloader\uart.h Resources\bootloader\flash.h \
+  Resources\bootloader\xdelta\delta.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  Resources\bootloader\xdelta\..\..\bootloader\uart.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\sdcard.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\spi.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\ff.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h \
+  Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h

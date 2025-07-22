@@ -25,9 +25,9 @@
   Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h \
   Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h \
   Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h \
-  Resources\main\..\xdelta\delta.h \
+  Resources\main\..\bootloader\xdelta\delta.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  Resources\main\..\xdelta\..\bootloader\uart.h \
-  Resources\main\..\xdelta\..\spi_sdcard\sdcard.h \
+  Resources\main\..\bootloader\xdelta\..\..\bootloader\uart.h \
+  Resources\main\..\bootloader\xdelta\..\..\spi_sdcard\sdcard.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\ctype.h Resources\main\iwdg.h

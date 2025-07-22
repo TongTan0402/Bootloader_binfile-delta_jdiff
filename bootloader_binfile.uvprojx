@@ -526,17 +526,17 @@
             <File>
               <FileName>delta.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Resources\xdelta\delta.c</FilePath>
+              <FilePath>.\Resources\bootloader\xdelta\delta.c</FilePath>
             </File>
             <File>
               <FileName>delta.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Resources\xdelta\delta.h</FilePath>
+              <FilePath>.\Resources\bootloader\xdelta\delta.h</FilePath>
             </File>
             <File>
               <FileName>janpatch.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Resources\xdelta\janpatch.h</FilePath>
+              <FilePath>.\Resources\bootloader\xdelta\janpatch.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -643,5 +643,20 @@
       </file>
     </files>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>&lt;Project Info&gt;</LayName>
+        <LayDesc></LayDesc>
+        <LayUrl></LayUrl>
+        <LayKeys></LayKeys>
+        <LayCat></LayCat>
+        <LayLic></LayLic>
+        <LayTarg>0</LayTarg>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

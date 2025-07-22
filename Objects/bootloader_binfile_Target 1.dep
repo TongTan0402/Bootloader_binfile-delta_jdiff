@@ -1,6 +1,6 @@
 Dependencies for Project 'bootloader_binfile', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 6140000::V6.14::ARMCLANG
-F (.\Resources\main\iwdg.c)(0x6878E2BD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/iwdg.o -MD)
+F (.\Resources\main\iwdg.c)(0x6878F18E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/iwdg.o -MD)
 I (Resources\main\iwdg.h)(0x687866F7)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
@@ -21,8 +21,8 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
 F (.\Resources\main\iwdg.h)(0x687866F7)()
-F (.\Resources\main\main.c)(0x6878671F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/main.o -MD)
-I (Resources\main\sys.h)(0x6878B172)
+F (.\Resources\main\main.c)(0x687E7DA7)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/main.o -MD)
+I (Resources\main\sys.h)(0x687E1CEE)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
@@ -41,24 +41,24 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
-I (Resources\main\..\bootloader\uart.h)(0x68650C87)
-I (Resources\main\..\bootloader\fsm.h)(0x6878DFA8)
-I (Resources\main\..\bootloader\flash.h)(0x68650CCF)
-I (Resources\main\..\spi_sdcard\sdcard.h)(0x6878DA48)
+I (Resources\main\..\bootloader\uart.h)(0x687E69DF)
+I (Resources\main\..\bootloader\fsm.h)(0x687E797A)
+I (Resources\main\..\bootloader\flash.h)(0x687E0BD0)
+I (Resources\main\..\spi_sdcard\sdcard.h)(0x6878F18E)
 I (Resources\main\..\spi_sdcard\spi.h)(0x6877A0E4)
 I (Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\ff.h)(0x68776AE9)
 I (Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h)(0x68776AE9)
 I (Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h)(0x68776AE9)
 I (Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h)(0x68776AE9)
-I (Resources\main\..\xdelta\delta.h)(0x6878DA8F)
+I (Resources\main\..\bootloader\xdelta\delta.h)(0x687E1CEE)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED619F4)
-I (Resources\main\..\xdelta\..\bootloader\uart.h)(0x68650C87)
-I (Resources\main\..\xdelta\..\spi_sdcard\sdcard.h)(0x6878DA48)
+I (Resources\main\..\bootloader\xdelta\..\..\bootloader\uart.h)(0x687E69DF)
+I (Resources\main\..\bootloader\xdelta\..\..\spi_sdcard\sdcard.h)(0x6878F18E)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x5ED619F4)
 I (C:\Keil_v5\ARM\ARMCLANG\include\ctype.h)(0x5ED619F4)
 I (Resources\main\iwdg.h)(0x687866F7)
-F (.\Resources\main\sys.c)(0x6878E42E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/sys.o -MD)
-I (Resources\main\sys.h)(0x6878B172)
+F (.\Resources\main\sys.c)(0x687E8722)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/sys.o -MD)
+I (Resources\main\sys.h)(0x687E1CEE)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
@@ -77,24 +77,24 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
-I (Resources\main\..\bootloader\uart.h)(0x68650C87)
-I (Resources\main\..\bootloader\fsm.h)(0x6878DFA8)
-I (Resources\main\..\bootloader\flash.h)(0x68650CCF)
-I (Resources\main\..\spi_sdcard\sdcard.h)(0x6878DA48)
+I (Resources\main\..\bootloader\uart.h)(0x687E69DF)
+I (Resources\main\..\bootloader\fsm.h)(0x687E797A)
+I (Resources\main\..\bootloader\flash.h)(0x687E0BD0)
+I (Resources\main\..\spi_sdcard\sdcard.h)(0x6878F18E)
 I (Resources\main\..\spi_sdcard\spi.h)(0x6877A0E4)
 I (Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\ff.h)(0x68776AE9)
 I (Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h)(0x68776AE9)
 I (Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h)(0x68776AE9)
 I (Resources\main\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h)(0x68776AE9)
-I (Resources\main\..\xdelta\delta.h)(0x6878DA8F)
+I (Resources\main\..\bootloader\xdelta\delta.h)(0x687E1CEE)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED619F4)
-I (Resources\main\..\xdelta\..\bootloader\uart.h)(0x68650C87)
-I (Resources\main\..\xdelta\..\spi_sdcard\sdcard.h)(0x6878DA48)
+I (Resources\main\..\bootloader\xdelta\..\..\bootloader\uart.h)(0x687E69DF)
+I (Resources\main\..\bootloader\xdelta\..\..\spi_sdcard\sdcard.h)(0x6878F18E)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x5ED619F4)
 I (C:\Keil_v5\ARM\ARMCLANG\include\ctype.h)(0x5ED619F4)
-F (.\Resources\main\sys.h)(0x6878B172)()
-F (.\Resources\bootloader\flash.c)(0x6878E292)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/flash.o -MD)
-I (Resources\bootloader\flash.h)(0x68650CCF)
+F (.\Resources\main\sys.h)(0x687E1CEE)()
+F (.\Resources\bootloader\flash.c)(0x6878F18E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/flash.o -MD)
+I (Resources\bootloader\flash.h)(0x687E0BD0)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
@@ -113,9 +113,9 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
-F (.\Resources\bootloader\flash.h)(0x68650CCF)()
-F (.\Resources\bootloader\fsm.c)(0x6878E259)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/fsm.o -MD)
-I (Resources\bootloader\fsm.h)(0x6878DFA8)
+F (.\Resources\bootloader\flash.h)(0x687E0BD0)()
+F (.\Resources\bootloader\fsm.c)(0x687F1F86)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/fsm.o -MD)
+I (Resources\bootloader\fsm.h)(0x687E797A)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
@@ -134,15 +134,24 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
-I (Resources\bootloader\uart.h)(0x68650C87)
-I (Resources\bootloader\flash.h)(0x68650CCF)
-F (.\Resources\bootloader\fsm.h)(0x6878DFA8)()
-F (.\Resources\bootloader\uart.c)(0x6878DF6E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/uart.o -MD)
-I (Resources\bootloader\uart.h)(0x68650C87)
+I (Resources\bootloader\uart.h)(0x687E69DF)
+I (Resources\bootloader\flash.h)(0x687E0BD0)
+I (Resources\bootloader\xdelta\delta.h)(0x687E1CEE)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED619F4)
+I (Resources\bootloader\xdelta\..\..\bootloader\uart.h)(0x687E69DF)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\sdcard.h)(0x6878F18E)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\spi.h)(0x6877A0E4)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\ff.h)(0x68776AE9)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h)(0x68776AE9)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h)(0x68776AE9)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h)(0x68776AE9)
+F (.\Resources\bootloader\fsm.h)(0x687E797A)()
+F (.\Resources\bootloader\uart.c)(0x687EFFB9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/uart.o -MD)
+I (Resources\bootloader\uart.h)(0x687E69DF)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED619F4)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED619F4)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_version.h)(0x6851FB20)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_compiler.h)(0x6851FB20)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_armclang.h)(0x6851FB20)
@@ -159,9 +168,9 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED619F4)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x5ED619F4)
-F (.\Resources\bootloader\uart.h)(0x68650C87)()
-F (.\Resources\bootloader\jump_to_app.c)(0x6878DF84)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/jump_to_app.o -MD)
-I (Resources\bootloader\jump_to_app.h)(0x6878DF73)
+F (.\Resources\bootloader\uart.h)(0x687E69DF)()
+F (.\Resources\bootloader\jump_to_app.c)(0x687E860C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/jump_to_app.o -MD)
+I (Resources\bootloader\jump_to_app.h)(0x687E0BDA)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
@@ -180,9 +189,9 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
-F (.\Resources\bootloader\jump_to_app.h)(0x6878DF73)()
-F (.\Resources\spi_sdcard\sdcard.c)(0x6878DCE0)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/sdcard.o -MD)
-I (Resources\spi_sdcard\sdcard.h)(0x6878DA48)
+F (.\Resources\bootloader\jump_to_app.h)(0x687E0BDA)()
+F (.\Resources\spi_sdcard\sdcard.c)(0x6878F18E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/sdcard.o -MD)
+I (Resources\spi_sdcard\sdcard.h)(0x6878F18E)
 I (Resources\spi_sdcard\spi.h)(0x6877A0E4)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
@@ -207,8 +216,8 @@ I (Resources\spi_sdcard\..\spi_sdcard\fatfs\integer.h)(0x68776AE9)
 I (Resources\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h)(0x68776AE9)
 I (Resources\spi_sdcard\..\spi_sdcard\fatfs\diskio.h)(0x68776AE9)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5ED619F4)
-F (.\Resources\spi_sdcard\sdcard.h)(0x6878DA48)()
-F (.\Resources\spi_sdcard\spi.c)(0x6878DA82)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/spi.o -MD)
+F (.\Resources\spi_sdcard\sdcard.h)(0x6878F18E)()
+F (.\Resources\spi_sdcard\spi.c)(0x6878F18E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/spi.o -MD)
 I (Resources\spi_sdcard\spi.h)(0x6877A0E4)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
@@ -237,7 +246,7 @@ F (.\Resources\spi_sdcard\fatfs\diskio.c)(0x6878AEB3)(-xc -std=c99 --target=arm-
 I (Resources\spi_sdcard\fatfs\diskio.h)(0x68776AE9)
 I (Resources\spi_sdcard\fatfs\integer.h)(0x68776AE9)
 I (Resources\spi_sdcard\fatfs\ffconf.h)(0x68776AE9)
-I (Resources\spi_sdcard\fatfs\..\sdcard.h)(0x6878DA48)
+I (Resources\spi_sdcard\fatfs\..\sdcard.h)(0x6878F18E)
 I (Resources\spi_sdcard\fatfs\..\spi.h)(0x6877A0E4)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
@@ -269,14 +278,14 @@ I (Resources\spi_sdcard\fatfs\diskio.h)(0x68776AE9)
 F (.\Resources\spi_sdcard\fatfs\ff.h)(0x68776AE9)()
 F (.\Resources\spi_sdcard\fatfs\ffconf.h)(0x68776AE9)()
 F (.\Resources\spi_sdcard\fatfs\integer.h)(0x68776AE9)()
-F (.\Resources\xdelta\delta.c)(0x6878DF1B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/delta.o -MD)
-I (Resources\xdelta\delta.h)(0x6878DA8F)
+F (.\Resources\bootloader\xdelta\delta.c)(0x687F1E43)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/delta.o -MD)
+I (Resources\bootloader\xdelta\delta.h)(0x687E1CEE)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED619F4)
-I (Resources\xdelta\..\bootloader\uart.h)(0x68650C87)
+I (Resources\bootloader\xdelta\..\..\bootloader\uart.h)(0x687E69DF)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED619F4)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
 I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED619F4)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_version.h)(0x6851FB20)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_compiler.h)(0x6851FB20)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_armclang.h)(0x6851FB20)
@@ -291,18 +300,20 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
-I (Resources\xdelta\..\spi_sdcard\sdcard.h)(0x6878DA48)
-I (Resources\xdelta\..\spi_sdcard\spi.h)(0x6877A0E4)
-I (Resources\xdelta\..\spi_sdcard\..\spi_sdcard\fatfs\ff.h)(0x68776AE9)
-I (Resources\xdelta\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h)(0x68776AE9)
-I (Resources\xdelta\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h)(0x68776AE9)
-I (Resources\xdelta\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h)(0x68776AE9)
-I (Resources\xdelta\janpatch.h)(0x6878AE97)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\sdcard.h)(0x6878F18E)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\spi.h)(0x6877A0E4)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\ff.h)(0x68776AE9)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\integer.h)(0x68776AE9)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\ffconf.h)(0x68776AE9)
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\..\spi_sdcard\fatfs\diskio.h)(0x68776AE9)
+I (Resources\bootloader\xdelta\janpatch.h)(0x687F1EDC)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED619F4)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x5ED619F4)
-I (Resources\xdelta\..\spi_sdcard\fatfs\ff.h)(0x68776AE9)
-F (.\Resources\xdelta\delta.h)(0x6878DA8F)()
-F (.\Resources\xdelta\janpatch.h)(0x6878AE97)()
+I (Resources\bootloader\xdelta\..\..\spi_sdcard\fatfs\ff.h)(0x68776AE9)
+I (Resources\bootloader\xdelta\..\flash.h)(0x687E0BD0)
+I (Resources\bootloader\xdelta\..\fsm.h)(0x687E797A)
+F (.\Resources\bootloader\xdelta\delta.h)(0x687E1CEE)()
+F (.\Resources\bootloader\xdelta\janpatch.h)(0x687F1EDC)()
 F (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\src\misc.c)(0x687536E4)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/misc.o -MD)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
@@ -322,6 +333,25 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
+F (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\src\stm32f10x_flash.c)(0x61AD876E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/stm32f10x_flash.o -MD)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD876E)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
+I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED619F4)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_version.h)(0x6851FB20)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_compiler.h)(0x6851FB20)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_armclang.h)(0x6851FB20)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0CD128)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x6851FB20)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x61AD876E)
+I (RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x61AD876E)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD876E)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x61AD876E)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD876E)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
+I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
 F (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\src\stm32f10x_gpio.c)(0x67A96954)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/stm32f10x_gpio.o -MD)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
@@ -433,25 +463,6 @@ I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\m-p
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x61AD876E)
 I (RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD876E)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD876E)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x61AD876E)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD876E)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x61AD876E)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x61AD876E)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6705FFE4)
-F (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\src\stm32f10x_flash.c)(0x61AD876E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -w-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/tongs/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/tongs/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o ./objects/stm32f10x_flash.o -MD)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x61AD876E)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x67061E9B)
-I (RTE\_Target_1\RTE_Components.h)(0x6878657A)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\core_cm3.h)(0x6851FB20)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED619F4)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_version.h)(0x6851FB20)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_compiler.h)(0x6851FB20)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\cmsis_armclang.h)(0x6851FB20)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0CD128)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\ARM\CMSIS\6.2.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x6851FB20)
-I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x61AD876E)
-I (RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x61AD876E)
 I (C:\Users\tongs\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x61AD876E)
