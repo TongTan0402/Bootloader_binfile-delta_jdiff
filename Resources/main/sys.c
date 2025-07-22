@@ -77,6 +77,6 @@ void PC13_Blink(void)
 	for(int i=0; i<6; i++)
 	{
 		GPIOC->ODR ^= GPIO_Pin_13;
-		for(volatile int j=0; j<0x5ffff; j++);
+		for(volatile int j=0; j<0x4ffff; j++);
 	}
 }

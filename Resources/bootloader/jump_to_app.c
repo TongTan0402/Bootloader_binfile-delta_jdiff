@@ -19,8 +19,6 @@ void JumpToApp(uint32_t app_address)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, DISABLE);
 	NVIC_EnableIRQ(USART3_IRQn);
 	
-	IWDG_WriteAccessCmd(IWDG_WriteAccess_Disable);
-	
 	// Tat ngat
 	__disable_irq();
 	

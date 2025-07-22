@@ -1,6 +1,5 @@
 @echo off
 setlocal enabledelayedexpansion
-
 :: Đường dẫn đầy đủ đến file .bin được build từ Keil MDK
 set base_path=D:\Documents\Programs\STM32\SPL\Blink_Led\Objects\
 

@@ -55,7 +55,10 @@ typedef enum
 typedef enum
 {
 	FSM_START_TYPE_FIRMWARE,
-	FSM_START_TYPE_PATCH
+	FSM_START_TYPE_PATCH,
+	FSM_START_TYPE_APP,
+
+	FSM_START_TYPE_COUNT
 	
 } StartType_e;
 
@@ -291,6 +294,10 @@ FSM_Ack_e FSM_LoadDataIntoFlash(void)
 				FSM_GET_PATCH_ADDRESS();
 				address = fsm_app_indication.patch_address;
 			}
+			else if(fsm_start_type == FSM_START_TYPE_APP)
+			{
+				address = fsm_app_indication.app_address;
+			}
 
 			fsm_type_message = FSM_TYPE_MESSAGE_DATA;
 			break;
@@ -300,7 +307,7 @@ FSM_Ack_e FSM_LoadDataIntoFlash(void)
 		{
 			if(fsm_type_message == FSM_TYPE_MESSAGE_DATA)
 			{
-				if(fsm_start_type == FSM_START_TYPE_FIRMWARE)
+				if(fsm_start_type == FSM_START_TYPE_FIRMWARE || fsm_start_type == FSM_START_TYPE_APP)
 				{
 					if(fsm_num_of_message_in_a_chunk >= FLASH_PAGE_SIZE) 
 					{
@@ -328,18 +335,18 @@ FSM_Ack_e FSM_LoadDataIntoFlash(void)
 		{
 			fsm_type_message = FSM_TYPE_MESSAGE_START;
 			
-			if(fsm_start_type == FSM_START_TYPE_FIRMWARE)
+			if(fsm_start_type == FSM_START_TYPE_FIRMWARE || fsm_start_type == FSM_START_TYPE_APP)
 			{
 				Flash_WriteByte(address, fsm_data, fsm_num_of_message_in_a_chunk);
 				fsm_app_indication.app_length = fsm_app_indication.firmware_length;
 			}
 			else if(fsm_start_type == FSM_START_TYPE_PATCH)
 			{
-				Flash_WriteByte(address, fsm_data, fsm_num_of_message_in_a_chunk);
 				fsm_app_indication.patch_length += fsm_num_of_message_in_a_chunk;
 				
 				if(fsm_app_indication.patch_length > 5)
 				{
+					Flash_WriteByte(address, fsm_data, fsm_num_of_message_in_a_chunk);
 					FSM_GET_FIRMWARE_ADDRESS();
 					Delta_Run();
 				}
@@ -347,7 +354,10 @@ FSM_Ack_e FSM_LoadDataIntoFlash(void)
 			
 			if(fsm_app_indication.patch_length > 5 || fsm_start_type == FSM_START_TYPE_FIRMWARE)
 			{
-				Swap_AppAndFirmware();
+				if(fsm_start_type != FSM_START_TYPE_APP)
+				{
+					Swap_AppAndFirmware();
+				}
 				FSM_LoadAppIndicationIntoFlash();
 			}
 			ack = FSM_ACK_UPDATE_FIRMWARE_SUCESSFULLY;

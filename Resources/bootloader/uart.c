@@ -269,6 +269,7 @@ uint16_t UARTx_ReceiveData(uint8_t *data)
 			while(Queue_Pop(data++)) length++;
 		}
 	}
+	*(data - 1) = '\0';
 	return length;
 }
 

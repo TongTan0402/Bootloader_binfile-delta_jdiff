@@ -83,9 +83,9 @@ Section Cross References
     fsm.o(.text.FSM_LoadDataIntoFlash) refers to fsm.o(.bss.fsm_num_of_message_in_a_chunk) for fsm_num_of_message_in_a_chunk
     fsm.o(.text.FSM_LoadDataIntoFlash) refers to fsm.o(.bss.fsm_data) for fsm_data
     fsm.o(.text.FSM_LoadDataIntoFlash) refers to flash.o(.text.Flash_WriteByte) for Flash_WriteByte
-    fsm.o(.text.FSM_LoadDataIntoFlash) refers to delta.o(.text.Delta_Run) for Delta_Run
     fsm.o(.text.FSM_LoadDataIntoFlash) refers to fsm.o(.text.Swap_AppAndFirmware) for Swap_AppAndFirmware
     fsm.o(.text.FSM_LoadDataIntoFlash) refers to fsm.o(.text.FSM_LoadAppIndicationIntoFlash) for FSM_LoadAppIndicationIntoFlash
+    fsm.o(.text.FSM_LoadDataIntoFlash) refers to delta.o(.text.Delta_Run) for Delta_Run
     fsm.o(.ARM.exidx.text.FSM_LoadDataIntoFlash) refers to fsm.o(.text.FSM_LoadDataIntoFlash) for [Anonymous Symbol]
     fsm.o(.data.fsm_frame_ptr) refers to fsm.o(.bss.fsm_frame) for fsm_frame
     uart.o(.text) refers (Special) to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
@@ -417,7 +417,6 @@ Section Cross References
     jump_to_app.o(.text.JumpToApp) refers to stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
     jump_to_app.o(.text.JumpToApp) refers to jump_to_app.o(.text.__NVIC_EnableIRQ) for __NVIC_EnableIRQ
     jump_to_app.o(.text.JumpToApp) refers to stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd) for RCC_APB1PeriphClockCmd
-    jump_to_app.o(.text.JumpToApp) refers to stm32f10x_iwdg.o(.text.IWDG_WriteAccessCmd) for IWDG_WriteAccessCmd
     jump_to_app.o(.ARM.exidx.text.JumpToApp) refers to jump_to_app.o(.text.JumpToApp) for [Anonymous Symbol]
     jump_to_app.o(.ARM.exidx.text.__NVIC_EnableIRQ) refers to jump_to_app.o(.text.__NVIC_EnableIRQ) for [Anonymous Symbol]
     jump_to_app.o(.text.JumpButton_Init) refers to stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
@@ -1509,6 +1508,7 @@ Removing Unused input sections from the image.
     Removing stm32f10x_gpio.o(.text.GPIO_ETH_MediaInterfaceConfig), (10 bytes).
     Removing stm32f10x_gpio.o(.ARM.exidx.text.GPIO_ETH_MediaInterfaceConfig), (8 bytes).
     Removing stm32f10x_iwdg.o(.text), (0 bytes).
+    Removing stm32f10x_iwdg.o(.text.IWDG_WriteAccessCmd), (12 bytes).
     Removing stm32f10x_iwdg.o(.ARM.exidx.text.IWDG_WriteAccessCmd), (8 bytes).
     Removing stm32f10x_iwdg.o(.text.IWDG_SetPrescaler), (12 bytes).
     Removing stm32f10x_iwdg.o(.ARM.exidx.text.IWDG_SetPrescaler), (8 bytes).
@@ -1689,7 +1689,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f10x.o(.data.SystemCoreClock), (4 bytes).
     Removing system_stm32f10x.o(.rodata.AHBPrescTable), (16 bytes).
 
-504 unused section(s) (total 17811 bytes) removed from the image.
+505 unused section(s) (total 17823 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1922,44 +1922,43 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08000e74   Section        0  fsm.o(.text.FSM_GetMessage)
     [Anonymous Symbol]                       0x08001018   Section        0  fsm.o(.text.FSM_LoadAppIndicationIntoFlash)
     [Anonymous Symbol]                       0x08001034   Section        0  fsm.o(.text.FSM_LoadDataIntoFlash)
-    [Anonymous Symbol]                       0x0800121c   Section        0  fsm.o(.text.FSM_ResetFrame)
-    [Anonymous Symbol]                       0x08001234   Section        0  fsm.o(.text.FSM_Response)
-    [Anonymous Symbol]                       0x0800124c   Section        0  flash.o(.text.Flash_Read)
-    [Anonymous Symbol]                       0x0800126c   Section        0  flash.o(.text.Flash_Write)
-    [Anonymous Symbol]                       0x080012a8   Section        0  flash.o(.text.Flash_WriteByte)
-    [Anonymous Symbol]                       0x080012f4   Section        0  stm32f10x_gpio.o(.text.GPIO_Init)
-    [Anonymous Symbol]                       0x080013a4   Section        0  stm32f10x_gpio.o(.text.GPIO_PinRemapConfig)
-    [Anonymous Symbol]                       0x08001418   Section        0  stm32f10x_iwdg.o(.text.IWDG_WriteAccessCmd)
-    [Anonymous Symbol]                       0x08001424   Section        0  jump_to_app.o(.text.JumpButton_Init)
-    [Anonymous Symbol]                       0x08001450   Section        0  jump_to_app.o(.text.JumpToApp)
-    [Anonymous Symbol]                       0x080014c4   Section        0  sys.o(.text.PC13_Blink)
-    [Anonymous Symbol]                       0x08001510   Section        0  sys.o(.text.PC13_Config)
-    Queue_Pop                                0x08001539   Thumb Code    74  uart.o(.text.Queue_Pop)
-    [Anonymous Symbol]                       0x08001538   Section        0  uart.o(.text.Queue_Pop)
-    Queue_Push                               0x08001585   Thumb Code    70  uart.o(.text.Queue_Push)
-    [Anonymous Symbol]                       0x08001584   Section        0  uart.o(.text.Queue_Push)
-    [Anonymous Symbol]                       0x080015cc   Section        0  stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd)
-    [Anonymous Symbol]                       0x080015e4   Section        0  stm32f10x_rcc.o(.text.RCC_APB1PeriphResetCmd)
-    [Anonymous Symbol]                       0x080015fc   Section        0  stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd)
-    [Anonymous Symbol]                       0x08001614   Section        0  stm32f10x_rcc.o(.text.RCC_APB2PeriphResetCmd)
-    [Anonymous Symbol]                       0x0800162c   Section        0  stm32f10x_rcc.o(.text.RCC_GetClocksFreq)
-    SetSysClock                              0x080016cd   Thumb Code     8  system_stm32f10x.o(.text.SetSysClock)
-    [Anonymous Symbol]                       0x080016cc   Section        0  system_stm32f10x.o(.text.SetSysClock)
-    SetSysClockTo72                          0x080016d5   Thumb Code   190  system_stm32f10x.o(.text.SetSysClockTo72)
-    [Anonymous Symbol]                       0x080016d4   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
-    [Anonymous Symbol]                       0x08001794   Section        0  fsm.o(.text.Swap_AppAndFirmware)
-    [Anonymous Symbol]                       0x080017d0   Section        0  sys.o(.text.Sys_Init)
-    [Anonymous Symbol]                       0x080017f8   Section        0  sys.o(.text.Sys_Run)
-    [Anonymous Symbol]                       0x080018d4   Section        0  system_stm32f10x.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x0800192c   Section        0  uart.o(.text.UART1_Init)
-    [Anonymous Symbol]                       0x08001934   Section        0  uart.o(.text.UART1_Print)
-    [Anonymous Symbol]                       0x08001954   Section        0  uart.o(.text.UART1_Scan)
-    UART_SendChar                            0x0800195d   Thumb Code    34  uart.o(.text.UART_SendChar)
-    [Anonymous Symbol]                       0x0800195c   Section        0  uart.o(.text.UART_SendChar)
-    UART_SendString                          0x08001981   Thumb Code    20  uart.o(.text.UART_SendString)
-    [Anonymous Symbol]                       0x08001980   Section        0  uart.o(.text.UART_SendString)
-    [Anonymous Symbol]                       0x08001994   Section        0  uart.o(.text.UARTx_Init)
-    [Anonymous Symbol]                       0x08001a74   Section        0  uart.o(.text.UARTx_ReceiveData)
+    [Anonymous Symbol]                       0x0800122c   Section        0  fsm.o(.text.FSM_ResetFrame)
+    [Anonymous Symbol]                       0x08001244   Section        0  fsm.o(.text.FSM_Response)
+    [Anonymous Symbol]                       0x0800125c   Section        0  flash.o(.text.Flash_Read)
+    [Anonymous Symbol]                       0x0800127c   Section        0  flash.o(.text.Flash_Write)
+    [Anonymous Symbol]                       0x080012b8   Section        0  flash.o(.text.Flash_WriteByte)
+    [Anonymous Symbol]                       0x08001304   Section        0  stm32f10x_gpio.o(.text.GPIO_Init)
+    [Anonymous Symbol]                       0x080013b4   Section        0  stm32f10x_gpio.o(.text.GPIO_PinRemapConfig)
+    [Anonymous Symbol]                       0x08001428   Section        0  jump_to_app.o(.text.JumpButton_Init)
+    [Anonymous Symbol]                       0x08001454   Section        0  jump_to_app.o(.text.JumpToApp)
+    [Anonymous Symbol]                       0x080014c0   Section        0  sys.o(.text.PC13_Blink)
+    [Anonymous Symbol]                       0x0800150c   Section        0  sys.o(.text.PC13_Config)
+    Queue_Pop                                0x08001535   Thumb Code    74  uart.o(.text.Queue_Pop)
+    [Anonymous Symbol]                       0x08001534   Section        0  uart.o(.text.Queue_Pop)
+    Queue_Push                               0x08001581   Thumb Code    70  uart.o(.text.Queue_Push)
+    [Anonymous Symbol]                       0x08001580   Section        0  uart.o(.text.Queue_Push)
+    [Anonymous Symbol]                       0x080015c8   Section        0  stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd)
+    [Anonymous Symbol]                       0x080015e0   Section        0  stm32f10x_rcc.o(.text.RCC_APB1PeriphResetCmd)
+    [Anonymous Symbol]                       0x080015f8   Section        0  stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd)
+    [Anonymous Symbol]                       0x08001610   Section        0  stm32f10x_rcc.o(.text.RCC_APB2PeriphResetCmd)
+    [Anonymous Symbol]                       0x08001628   Section        0  stm32f10x_rcc.o(.text.RCC_GetClocksFreq)
+    SetSysClock                              0x080016c9   Thumb Code     8  system_stm32f10x.o(.text.SetSysClock)
+    [Anonymous Symbol]                       0x080016c8   Section        0  system_stm32f10x.o(.text.SetSysClock)
+    SetSysClockTo72                          0x080016d1   Thumb Code   190  system_stm32f10x.o(.text.SetSysClockTo72)
+    [Anonymous Symbol]                       0x080016d0   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
+    [Anonymous Symbol]                       0x08001790   Section        0  fsm.o(.text.Swap_AppAndFirmware)
+    [Anonymous Symbol]                       0x080017cc   Section        0  sys.o(.text.Sys_Init)
+    [Anonymous Symbol]                       0x080017f4   Section        0  sys.o(.text.Sys_Run)
+    [Anonymous Symbol]                       0x080018d0   Section        0  system_stm32f10x.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x08001928   Section        0  uart.o(.text.UART1_Init)
+    [Anonymous Symbol]                       0x08001930   Section        0  uart.o(.text.UART1_Print)
+    [Anonymous Symbol]                       0x08001950   Section        0  uart.o(.text.UART1_Scan)
+    UART_SendChar                            0x08001959   Thumb Code    34  uart.o(.text.UART_SendChar)
+    [Anonymous Symbol]                       0x08001958   Section        0  uart.o(.text.UART_SendChar)
+    UART_SendString                          0x0800197d   Thumb Code    20  uart.o(.text.UART_SendString)
+    [Anonymous Symbol]                       0x0800197c   Section        0  uart.o(.text.UART_SendString)
+    [Anonymous Symbol]                       0x08001990   Section        0  uart.o(.text.UARTx_Init)
+    [Anonymous Symbol]                       0x08001a70   Section        0  uart.o(.text.UARTx_ReceiveData)
     [Anonymous Symbol]                       0x08001ac8   Section        0  uart.o(.text.UARTx_SendData)
     [Anonymous Symbol]                       0x08001b84   Section        0  uart.o(.text.USART1_IRQHandler)
     [Anonymous Symbol]                       0x08001ba4   Section        0  stm32f10x_usart.o(.text.USART_Cmd)
@@ -2252,33 +2251,32 @@ Image Symbol Table
     FSM_GetAppIndication                     0x08000e3d   Thumb Code    56  fsm.o(.text.FSM_GetAppIndication)
     FSM_GetMessage                           0x08000e75   Thumb Code   420  fsm.o(.text.FSM_GetMessage)
     FSM_LoadAppIndicationIntoFlash           0x08001019   Thumb Code    26  fsm.o(.text.FSM_LoadAppIndicationIntoFlash)
-    FSM_LoadDataIntoFlash                    0x08001035   Thumb Code   488  fsm.o(.text.FSM_LoadDataIntoFlash)
-    FSM_ResetFrame                           0x0800121d   Thumb Code    24  fsm.o(.text.FSM_ResetFrame)
-    FSM_Response                             0x08001235   Thumb Code    24  fsm.o(.text.FSM_Response)
-    Flash_Read                               0x0800124d   Thumb Code    30  flash.o(.text.Flash_Read)
-    Flash_Write                              0x0800126d   Thumb Code    58  flash.o(.text.Flash_Write)
-    Flash_WriteByte                          0x080012a9   Thumb Code    74  flash.o(.text.Flash_WriteByte)
-    GPIO_Init                                0x080012f5   Thumb Code   176  stm32f10x_gpio.o(.text.GPIO_Init)
-    GPIO_PinRemapConfig                      0x080013a5   Thumb Code   116  stm32f10x_gpio.o(.text.GPIO_PinRemapConfig)
-    IWDG_WriteAccessCmd                      0x08001419   Thumb Code    12  stm32f10x_iwdg.o(.text.IWDG_WriteAccessCmd)
-    JumpButton_Init                          0x08001425   Thumb Code    44  jump_to_app.o(.text.JumpButton_Init)
-    JumpToApp                                0x08001451   Thumb Code   114  jump_to_app.o(.text.JumpToApp)
-    PC13_Blink                               0x080014c5   Thumb Code    74  sys.o(.text.PC13_Blink)
-    PC13_Config                              0x08001511   Thumb Code    40  sys.o(.text.PC13_Config)
-    RCC_APB1PeriphClockCmd                   0x080015cd   Thumb Code    24  stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd)
-    RCC_APB1PeriphResetCmd                   0x080015e5   Thumb Code    24  stm32f10x_rcc.o(.text.RCC_APB1PeriphResetCmd)
-    RCC_APB2PeriphClockCmd                   0x080015fd   Thumb Code    24  stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd)
-    RCC_APB2PeriphResetCmd                   0x08001615   Thumb Code    24  stm32f10x_rcc.o(.text.RCC_APB2PeriphResetCmd)
-    RCC_GetClocksFreq                        0x0800162d   Thumb Code   160  stm32f10x_rcc.o(.text.RCC_GetClocksFreq)
-    Swap_AppAndFirmware                      0x08001795   Thumb Code    60  fsm.o(.text.Swap_AppAndFirmware)
-    Sys_Init                                 0x080017d1   Thumb Code    38  sys.o(.text.Sys_Init)
-    Sys_Run                                  0x080017f9   Thumb Code   220  sys.o(.text.Sys_Run)
-    SystemInit                               0x080018d5   Thumb Code    86  system_stm32f10x.o(.text.SystemInit)
-    UART1_Init                               0x0800192d   Thumb Code     8  uart.o(.text.UART1_Init)
-    UART1_Print                              0x08001935   Thumb Code    32  uart.o(.text.UART1_Print)
-    UART1_Scan                               0x08001955   Thumb Code     8  uart.o(.text.UART1_Scan)
-    UARTx_Init                               0x08001995   Thumb Code   222  uart.o(.text.UARTx_Init)
-    UARTx_ReceiveData                        0x08001a75   Thumb Code    84  uart.o(.text.UARTx_ReceiveData)
+    FSM_LoadDataIntoFlash                    0x08001035   Thumb Code   504  fsm.o(.text.FSM_LoadDataIntoFlash)
+    FSM_ResetFrame                           0x0800122d   Thumb Code    24  fsm.o(.text.FSM_ResetFrame)
+    FSM_Response                             0x08001245   Thumb Code    24  fsm.o(.text.FSM_Response)
+    Flash_Read                               0x0800125d   Thumb Code    30  flash.o(.text.Flash_Read)
+    Flash_Write                              0x0800127d   Thumb Code    58  flash.o(.text.Flash_Write)
+    Flash_WriteByte                          0x080012b9   Thumb Code    74  flash.o(.text.Flash_WriteByte)
+    GPIO_Init                                0x08001305   Thumb Code   176  stm32f10x_gpio.o(.text.GPIO_Init)
+    GPIO_PinRemapConfig                      0x080013b5   Thumb Code   116  stm32f10x_gpio.o(.text.GPIO_PinRemapConfig)
+    JumpButton_Init                          0x08001429   Thumb Code    44  jump_to_app.o(.text.JumpButton_Init)
+    JumpToApp                                0x08001455   Thumb Code   108  jump_to_app.o(.text.JumpToApp)
+    PC13_Blink                               0x080014c1   Thumb Code    74  sys.o(.text.PC13_Blink)
+    PC13_Config                              0x0800150d   Thumb Code    40  sys.o(.text.PC13_Config)
+    RCC_APB1PeriphClockCmd                   0x080015c9   Thumb Code    24  stm32f10x_rcc.o(.text.RCC_APB1PeriphClockCmd)
+    RCC_APB1PeriphResetCmd                   0x080015e1   Thumb Code    24  stm32f10x_rcc.o(.text.RCC_APB1PeriphResetCmd)
+    RCC_APB2PeriphClockCmd                   0x080015f9   Thumb Code    24  stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd)
+    RCC_APB2PeriphResetCmd                   0x08001611   Thumb Code    24  stm32f10x_rcc.o(.text.RCC_APB2PeriphResetCmd)
+    RCC_GetClocksFreq                        0x08001629   Thumb Code   160  stm32f10x_rcc.o(.text.RCC_GetClocksFreq)
+    Swap_AppAndFirmware                      0x08001791   Thumb Code    60  fsm.o(.text.Swap_AppAndFirmware)
+    Sys_Init                                 0x080017cd   Thumb Code    38  sys.o(.text.Sys_Init)
+    Sys_Run                                  0x080017f5   Thumb Code   220  sys.o(.text.Sys_Run)
+    SystemInit                               0x080018d1   Thumb Code    86  system_stm32f10x.o(.text.SystemInit)
+    UART1_Init                               0x08001929   Thumb Code     8  uart.o(.text.UART1_Init)
+    UART1_Print                              0x08001931   Thumb Code    32  uart.o(.text.UART1_Print)
+    UART1_Scan                               0x08001951   Thumb Code     8  uart.o(.text.UART1_Scan)
+    UARTx_Init                               0x08001991   Thumb Code   222  uart.o(.text.UARTx_Init)
+    UARTx_ReceiveData                        0x08001a71   Thumb Code    86  uart.o(.text.UARTx_ReceiveData)
     UARTx_SendData                           0x08001ac9   Thumb Code   188  uart.o(.text.UARTx_SendData)
     USART1_IRQHandler                        0x08001b85   Thumb Code    32  uart.o(.text.USART1_IRQHandler)
     USART_Cmd                                0x08001ba5   Thumb Code    18  stm32f10x_usart.o(.text.USART_Cmd)
@@ -2455,51 +2453,50 @@ Memory Map of the image
     0x08000e74   0x08000e74   0x000001a4   Code   RO           62    .text.FSM_GetMessage  fsm.o
     0x08001018   0x08001018   0x0000001a   Code   RO           60    .text.FSM_LoadAppIndicationIntoFlash  fsm.o
     0x08001032   0x08001032   0x00000002   PAD
-    0x08001034   0x08001034   0x000001e8   Code   RO           70    .text.FSM_LoadDataIntoFlash  fsm.o
-    0x0800121c   0x0800121c   0x00000018   Code   RO           56    .text.FSM_ResetFrame  fsm.o
-    0x08001234   0x08001234   0x00000018   Code   RO           64    .text.FSM_Response  fsm.o
-    0x0800124c   0x0800124c   0x0000001e   Code   RO           40    .text.Flash_Read    flash.o
-    0x0800126a   0x0800126a   0x00000002   PAD
-    0x0800126c   0x0800126c   0x0000003a   Code   RO           38    .text.Flash_Write   flash.o
-    0x080012a6   0x080012a6   0x00000002   PAD
-    0x080012a8   0x080012a8   0x0000004a   Code   RO           42    .text.Flash_WriteByte  flash.o
-    0x080012f2   0x080012f2   0x00000002   PAD
-    0x080012f4   0x080012f4   0x000000b0   Code   RO          474    .text.GPIO_Init     stm32f10x_gpio.o
-    0x080013a4   0x080013a4   0x00000074   Code   RO          500    .text.GPIO_PinRemapConfig  stm32f10x_gpio.o
-    0x08001418   0x08001418   0x0000000c   Code   RO          514    .text.IWDG_WriteAccessCmd  stm32f10x_iwdg.o
-    0x08001424   0x08001424   0x0000002c   Code   RO          138    .text.JumpButton_Init  jump_to_app.o
-    0x08001450   0x08001450   0x00000072   Code   RO          134    .text.JumpToApp     jump_to_app.o
-    0x080014c2   0x080014c2   0x00000002   PAD
-    0x080014c4   0x080014c4   0x0000004a   Code   RO           21    .text.PC13_Blink    sys.o
-    0x0800150e   0x0800150e   0x00000002   PAD
-    0x08001510   0x08001510   0x00000028   Code   RO           25    .text.PC13_Config   sys.o
-    0x08001538   0x08001538   0x0000004a   Code   RO          115    .text.Queue_Pop     uart.o
-    0x08001582   0x08001582   0x00000002   PAD
-    0x08001584   0x08001584   0x00000046   Code   RO          119    .text.Queue_Push    uart.o
-    0x080015ca   0x080015ca   0x00000002   PAD
-    0x080015cc   0x080015cc   0x00000018   Code   RO          580    .text.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
-    0x080015e4   0x080015e4   0x00000018   Code   RO          584    .text.RCC_APB1PeriphResetCmd  stm32f10x_rcc.o
-    0x080015fc   0x080015fc   0x00000018   Code   RO          578    .text.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
-    0x08001614   0x08001614   0x00000018   Code   RO          582    .text.RCC_APB2PeriphResetCmd  stm32f10x_rcc.o
-    0x0800162c   0x0800162c   0x000000a0   Code   RO          574    .text.RCC_GetClocksFreq  stm32f10x_rcc.o
-    0x080016cc   0x080016cc   0x00000008   Code   RO          739    .text.SetSysClock   system_stm32f10x.o
-    0x080016d4   0x080016d4   0x000000be   Code   RO          743    .text.SetSysClockTo72  system_stm32f10x.o
-    0x08001792   0x08001792   0x00000002   PAD
-    0x08001794   0x08001794   0x0000003c   Code   RO           68    .text.Swap_AppAndFirmware  fsm.o
-    0x080017d0   0x080017d0   0x00000026   Code   RO           19    .text.Sys_Init      sys.o
-    0x080017f6   0x080017f6   0x00000002   PAD
-    0x080017f8   0x080017f8   0x000000dc   Code   RO           23    .text.Sys_Run       sys.o
-    0x080018d4   0x080018d4   0x00000056   Code   RO          737    .text.SystemInit    system_stm32f10x.o
-    0x0800192a   0x0800192a   0x00000002   PAD
-    0x0800192c   0x0800192c   0x00000008   Code   RO           95    .text.UART1_Init    uart.o
-    0x08001934   0x08001934   0x00000020   Code   RO           99    .text.UART1_Print   uart.o
-    0x08001954   0x08001954   0x00000008   Code   RO           97    .text.UART1_Scan    uart.o
-    0x0800195c   0x0800195c   0x00000022   Code   RO          113    .text.UART_SendChar  uart.o
-    0x0800197e   0x0800197e   0x00000002   PAD
-    0x08001980   0x08001980   0x00000014   Code   RO          111    .text.UART_SendString  uart.o
-    0x08001994   0x08001994   0x000000de   Code   RO          101    .text.UARTx_Init    uart.o
-    0x08001a72   0x08001a72   0x00000002   PAD
-    0x08001a74   0x08001a74   0x00000054   Code   RO          109    .text.UARTx_ReceiveData  uart.o
+    0x08001034   0x08001034   0x000001f8   Code   RO           70    .text.FSM_LoadDataIntoFlash  fsm.o
+    0x0800122c   0x0800122c   0x00000018   Code   RO           56    .text.FSM_ResetFrame  fsm.o
+    0x08001244   0x08001244   0x00000018   Code   RO           64    .text.FSM_Response  fsm.o
+    0x0800125c   0x0800125c   0x0000001e   Code   RO           40    .text.Flash_Read    flash.o
+    0x0800127a   0x0800127a   0x00000002   PAD
+    0x0800127c   0x0800127c   0x0000003a   Code   RO           38    .text.Flash_Write   flash.o
+    0x080012b6   0x080012b6   0x00000002   PAD
+    0x080012b8   0x080012b8   0x0000004a   Code   RO           42    .text.Flash_WriteByte  flash.o
+    0x08001302   0x08001302   0x00000002   PAD
+    0x08001304   0x08001304   0x000000b0   Code   RO          474    .text.GPIO_Init     stm32f10x_gpio.o
+    0x080013b4   0x080013b4   0x00000074   Code   RO          500    .text.GPIO_PinRemapConfig  stm32f10x_gpio.o
+    0x08001428   0x08001428   0x0000002c   Code   RO          138    .text.JumpButton_Init  jump_to_app.o
+    0x08001454   0x08001454   0x0000006c   Code   RO          134    .text.JumpToApp     jump_to_app.o
+    0x080014c0   0x080014c0   0x0000004a   Code   RO           21    .text.PC13_Blink    sys.o
+    0x0800150a   0x0800150a   0x00000002   PAD
+    0x0800150c   0x0800150c   0x00000028   Code   RO           25    .text.PC13_Config   sys.o
+    0x08001534   0x08001534   0x0000004a   Code   RO          115    .text.Queue_Pop     uart.o
+    0x0800157e   0x0800157e   0x00000002   PAD
+    0x08001580   0x08001580   0x00000046   Code   RO          119    .text.Queue_Push    uart.o
+    0x080015c6   0x080015c6   0x00000002   PAD
+    0x080015c8   0x080015c8   0x00000018   Code   RO          580    .text.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
+    0x080015e0   0x080015e0   0x00000018   Code   RO          584    .text.RCC_APB1PeriphResetCmd  stm32f10x_rcc.o
+    0x080015f8   0x080015f8   0x00000018   Code   RO          578    .text.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
+    0x08001610   0x08001610   0x00000018   Code   RO          582    .text.RCC_APB2PeriphResetCmd  stm32f10x_rcc.o
+    0x08001628   0x08001628   0x000000a0   Code   RO          574    .text.RCC_GetClocksFreq  stm32f10x_rcc.o
+    0x080016c8   0x080016c8   0x00000008   Code   RO          739    .text.SetSysClock   system_stm32f10x.o
+    0x080016d0   0x080016d0   0x000000be   Code   RO          743    .text.SetSysClockTo72  system_stm32f10x.o
+    0x0800178e   0x0800178e   0x00000002   PAD
+    0x08001790   0x08001790   0x0000003c   Code   RO           68    .text.Swap_AppAndFirmware  fsm.o
+    0x080017cc   0x080017cc   0x00000026   Code   RO           19    .text.Sys_Init      sys.o
+    0x080017f2   0x080017f2   0x00000002   PAD
+    0x080017f4   0x080017f4   0x000000dc   Code   RO           23    .text.Sys_Run       sys.o
+    0x080018d0   0x080018d0   0x00000056   Code   RO          737    .text.SystemInit    system_stm32f10x.o
+    0x08001926   0x08001926   0x00000002   PAD
+    0x08001928   0x08001928   0x00000008   Code   RO           95    .text.UART1_Init    uart.o
+    0x08001930   0x08001930   0x00000020   Code   RO           99    .text.UART1_Print   uart.o
+    0x08001950   0x08001950   0x00000008   Code   RO           97    .text.UART1_Scan    uart.o
+    0x08001958   0x08001958   0x00000022   Code   RO          113    .text.UART_SendChar  uart.o
+    0x0800197a   0x0800197a   0x00000002   PAD
+    0x0800197c   0x0800197c   0x00000014   Code   RO          111    .text.UART_SendString  uart.o
+    0x08001990   0x08001990   0x000000de   Code   RO          101    .text.UARTx_Init    uart.o
+    0x08001a6e   0x08001a6e   0x00000002   PAD
+    0x08001a70   0x08001a70   0x00000056   Code   RO          109    .text.UARTx_ReceiveData  uart.o
+    0x08001ac6   0x08001ac6   0x00000002   PAD
     0x08001ac8   0x08001ac8   0x000000bc   Code   RO          107    .text.UARTx_SendData  uart.o
     0x08001b84   0x08001b84   0x00000020   Code   RO          117    .text.USART1_IRQHandler  uart.o
     0x08001ba4   0x08001ba4   0x00000012   Code   RO          672    .text.USART_Cmd     stm32f10x_usart.o
@@ -2623,21 +2620,20 @@ Image component sizes
 
       1364          6          0         96       3072       8483   delta.o
        162          0          0          0          0       1872   flash.o
-      1132         10          0          4       2096       4654   fsm.o
-       190          0          0          0          0       5092   jump_to_app.o
+      1148         10          0          4       2096       4729   fsm.o
+       184          0          0          0          0       5091   jump_to_app.o
         10          0          0          0          0        379   main.o
         64         26        236          0       1536        840   startup_stm32f10x_md.o
        330          0          0          0          0       8099   stm32f10x_flash.o
        292          0          0          0          0       5906   stm32f10x_gpio.o
-        12          0          0          0          0       1797   stm32f10x_iwdg.o
        256          0         20          0          0       7722   stm32f10x_rcc.o
        434          0          0          0          0       7990   stm32f10x_usart.o
        372          0          0          0       1027       2775   sys.o
        284          0          0          0          0       2925   system_stm32f10x.o
-       800         34          0         12       1118       7936   uart.o
+       802         34          0         12       1118       7951   uart.o
 
     ----------------------------------------------------------------------
-      5776         76        288        112       8856      66470   Object Totals
+      5776         76        288        112       8856      64762   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         74          0          0          0          7          0   (incl. Padding)
 
@@ -2722,8 +2718,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12016        450        524        112       8952      68010   Grand Totals
-     12016        450        524        112       8952      68010   ELF Image Totals
+     12016        450        524        112       8952      66318   Grand Totals
+     12016        450        524        112       8952      66318   ELF Image Totals
      12016        450        524        112          0          0   ROM Totals
 
 ==============================================================================
